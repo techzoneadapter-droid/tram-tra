@@ -79,7 +79,7 @@ return section(`<section class="faq-process-section section-wrap"><div class="se
 function specializedIntro(d){
 return section(`<section class="special-top"><div class="special-breadcrumb"><a href="${home}">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">${d.label}</span></div><div class="special-hero"><div class="special-hero-copy"><p class="eyebrow">${d.eyebrow}</p><h1>${d.title}</h1><p>${d.lead}</p><div class="special-actions"><a href="${d.anchor}" class="btn btn-primary">${d.action} ↗</a><a href="#dat-hang" class="special-order-link">Đặt hàng tại đây ↗</a></div></div><div class="special-hero-image"><span>${d.number}</span><img src="${d.image}" width="600" height="500" alt="Minh họa bao bì AGATEA ${esc(d.label)}"><small>AGATEA · Tinh hoa trà Việt</small></div></div></section>`);
 }
-const originalOrder=Object.keys(sectionMap).map(k=>sectionMap[k]).filter(Boolean);
+const originalOrder=Array.from(app.children).filter(el=>Object.values(sectionMap).includes(el));
 const plan=cfg?{
 story:[specializedIntro(cfg),storyChapters(),sectionMap.story,sectionMap.ritual,sectionMap.gifting,sectionMap.checkout],
 collection:[specializedIntro(cfg),buyingGuide(),sectionMap.products,sectionMap.assurance,sectionMap.faq,sectionMap.checkout],
