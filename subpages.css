@@ -1,0 +1,86 @@
+
+/* Dedicated AGATEA pages — one coherent type scale across all five visual directions */
+body {font-family:'Be Vietnam Pro',sans-serif;}
+h1,h2,h3,.special-top .special-hero-copy h1{font-family:'Playfair Display',Georgia,serif}
+body :focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.main-nav{align-items:center;white-space:nowrap}
+.main-nav a[aria-current="page"]{color:var(--accent);opacity:1;border-bottom:1px solid currentColor;padding-bottom:4px}
+.header-inner{min-width:0}
+#main-content{display:block;min-width:0}
+.special-top{background:#f8f1e7}
+.special-breadcrumb{max-width:1420px;margin:auto;padding:19px clamp(24px,5vw,80px);font-size:11px;display:flex;align-items:center;gap:13px;color:var(--ink2)}
+.special-breadcrumb a{border-bottom:1px solid transparent}.special-breadcrumb a:hover{border-bottom-color:currentColor}
+.special-breadcrumb span:last-child{font-weight:600;color:var(--accent)}
+.special-hero{min-height:570px;display:grid;grid-template-columns:54% 46%;max-width:1600px;margin:auto}
+.special-hero-copy{padding:75px clamp(24px,6vw,90px);align-self:center}
+.special-hero-copy h1{font-size:clamp(48px,5vw,85px);line-height:1.15;max-width:730px;font-weight:500;letter-spacing:-.04em;margin:22px 0 23px}
+.special-hero-copy>p:not(.eyebrow){font-size:14px;line-height:2;max-width:530px;color:var(--ink2)}
+.special-actions{margin-top:34px;display:flex;gap:25px;align-items:center;flex-wrap:wrap}
+.special-order-link{border-bottom:1px solid currentColor;padding:10px 0;font-size:12px;font-weight:700}
+.special-hero-image{min-height:470px;position:relative;background:radial-gradient(circle at 48% 45%,#ebd7b8,#c4a47f 70%,#aa845c);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.special-hero-image:after{content:"";inset:25px;position:absolute;border:1px solid #fff9e860;pointer-events:none}
+.special-hero-image img{width:min(84%,540px);max-height:490px;object-fit:contain;filter:drop-shadow(0 25px 25px #33201444)}
+.special-hero-image>span{position:absolute;top:36px;left:35px;font-size:10px;font-weight:600;letter-spacing:.15em;color:#65472c}
+.special-hero-image>small{position:absolute;right:35px;bottom:27px;font:italic 19px 'Playfair Display',serif;color:#563923}
+.chapter-section,.buying-guide,.occasion-section{padding-top:95px;padding-bottom:95px}
+.chapter-grid,.guide-grid,.occasion-grid,.faq-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.chapter,.guide-grid article,.occasion-grid article,.faq-process article{padding:32px 27px;border:1px solid var(--line);background:var(--white);min-width:0;display:flex;flex-direction:column}
+.chapter>span,.guide-grid article>span,.occasion-grid article>span{color:var(--accent);font:italic 21px 'Playfair Display',serif}
+.chapter h3,.guide-grid h3,.occasion-grid h3,.faq-process h3{font-size:clamp(23px,2.1vw,31px);font-weight:500;margin:25px 0 16px}
+.chapter p,.guide-grid article>p:not(.eyebrow),.occasion-grid article>p:not(.eyebrow),.faq-process p{font-size:12px;color:var(--ink2);line-height:2}
+.chapter small{margin-top:auto;border-top:1px solid var(--line);padding-top:20px;font-size:11px;color:var(--accent)}
+.buying-guide{background:var(--cream)}
+.guide-grid article .eyebrow{margin:22px 0 0}
+.guide-grid h3{margin:10px 0 12px}
+.guide-grid .text-arrow{margin-top:auto;align-self:start}
+.occasion-grid article{background:var(--cream);min-height:350px}
+.occasion-grid .eyebrow{margin:22px 0 0}
+.occasion-grid h3{margin:7px 0 14px}
+.occasion-grid .button-link{align-self:start;margin-top:auto}
+.faq-process-section{background:var(--cream)}
+.faq-process article{background:transparent;border:0;border-top:1px solid var(--line);padding:30px 10px 20px 0}
+.faq-process b{font:italic 32px 'Playfair Display',serif;color:var(--gold)}
+.faq-process h3{margin:15px 0 8px}
+.faq-process-section .text-arrow{margin-top:25px}
+body[data-theme="1"] .special-top{background:#e9d9c5}
+body[data-theme="1"] .special-hero-image{background:radial-gradient(circle,#b78b60,#63402b 77%)}
+body[data-theme="2"] .special-top{background:#f4f5ea}
+body[data-theme="2"] .special-hero-image{background:radial-gradient(circle,#f5e9ce,#a9b59a 76%)}
+body[data-theme="3"] .special-top{background:#f8e4d8}
+body[data-theme="3"] .special-hero-image{background:radial-gradient(circle,#e5bba6,#a2695b 77%)}
+body[data-theme="4"] .special-top{background:#f5f6ed}
+body[data-theme="4"] .special-hero-image{background:radial-gradient(circle,#dae4d5,#849e8e 77%)}
+body[data-theme="5"] .special-top{background:#e9d8c1}
+body[data-theme="5"] .special-hero-image{background:radial-gradient(circle,#e3c39d,#ab8057 77%)}
+@media(max-width:1100px){
+.main-nav{gap:15px}.main-nav a{font-size:10px}.header-inner{gap:14px;padding-inline:24px}
+.special-hero-copy{padding:55px 36px}.special-hero-copy h1{font-size:clamp(43px,5vw,67px)}
+}
+@media(max-width:800px){
+.main-nav{white-space:normal}.main-nav a{font-size:14px;padding:9px 0;display:block}
+.main-nav a[aria-current="page"]{border-bottom:0;border-left:2px solid var(--accent);padding-left:13px}
+.special-hero{grid-template-columns:1fr;min-height:unset}
+.special-hero-copy{padding:56px 30px 48px}.special-hero-image{min-height:370px}
+.special-hero-image img{max-height:365px}.special-hero-copy h1{font-size:clamp(44px,7vw,64px)}
+.chapter-grid,.guide-grid,.occasion-grid,.faq-process{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chapter-grid article:last-child,.guide-grid article:last-child,.occasion-grid article:last-child,.faq-process article:last-child{grid-column:1/-1}
+.chapter-section,.buying-guide,.occasion-section{padding-top:65px;padding-bottom:65px}
+}
+@media(max-width:540px){
+.special-breadcrumb{padding:15px 21px;font-size:10px}
+.special-hero-copy{padding:43px 22px 45px}
+.special-hero-copy h1{font-size:clamp(42px,10.5vw,56px);margin:14px 0 20px}
+.special-hero-copy>p:not(.eyebrow){font-size:12px;line-height:1.95}
+.special-actions{gap:14px;margin-top:24px}.special-actions .btn{width:100%;justify-content:center}
+.special-order-link{margin:auto}
+.special-hero-image{min-height:310px}.special-hero-image img{max-height:320px}
+.special-hero-image>span{top:18px;left:20px;font-size:9px}.special-hero-image>small{bottom:15px;right:18px;font-size:13px}
+.chapter-grid,.guide-grid,.occasion-grid,.faq-process{grid-template-columns:1fr;gap:12px}
+.chapter-grid article:last-child,.guide-grid article:last-child,.occasion-grid article:last-child,.faq-process article:last-child{grid-column:auto}
+.chapter,.guide-grid article,.occasion-grid article,.faq-process article{padding:24px 20px;min-height:auto}
+.chapter h3,.guide-grid h3,.occasion-grid h3,.faq-process h3{font-size:27px}
+.chapter-section,.buying-guide,.occasion-section{padding:59px 20px}
+.header-inner{padding-inline:14px}
+.main-nav{max-height:calc(100svh - 110px);overflow-y:auto}
+.order-form input:not([type="checkbox"]),.order-form select,.order-form textarea{font-size:16px}
+}

@@ -59,3 +59,17 @@ Dịch vụ bên thứ ba raw.githack.com phục vụ bản HTML trực tiếp t
 - [Mẫu 3 — Quà tặng](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-3.html)
 - [Mẫu 4 — Mua hàng](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-4.html)
 - [Mẫu 5 — Câu chuyện](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-5.html)
+
+## Cấu trúc điều hướng đa trang (cập nhật)
+
+Mỗi concept `mau-1.html` ... `mau-5.html` là **Trang chủ** đầy đủ nội dung. Thanh menu có 5 mục dẫn đến 5 trang/đường dẫn:
+
+- Trang chủ: `mau-1.html` ... `mau-5.html` tùy concept.
+- Câu chuyện: `cau-chuyen.html?mau=1` (thay 1 bằng 2–5 để giữ đúng phong cách).
+- Bộ sưu tập: `bo-suu-tap.html?mau=1`.
+- Quà tặng: `qua-tang.html?mau=1`.
+- Giải đáp: `giai-dap.html?mau=1`.
+
+Mỗi trang có nội dung chuyên sâu, H1 riêng, title/description SEO riêng, menu thống nhất, nút đặt hàng và form lựa chọn 6 sản phẩm. `source_page` trong Netlify Forms cho biết đơn đến từ trang nào. HTML/CSS dùng chung quy tắc font **Be Vietnam Pro** cho nội dung và **Playfair Display** cho tiêu đề, responsive từ desktop đến mobile. Trang chuyên biệt dùng cùng 5 bảng màu qua query `?mau=N`.
+
+**Lưu ý:** Đây là code và các bài kiểm tra kết xuất, chưa thay thế quá trình kiểm tra hiển thị trực tiếp trên máy thật/thiết bị thật trước khi chạy Ads. 

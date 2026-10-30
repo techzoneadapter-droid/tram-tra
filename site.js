@@ -119,7 +119,7 @@ const q=Number(data.get("quantity"));
 if(!Number.isInteger(q)||q<1||q>99){status.textContent="Vui lòng chọn số lượng từ 1 đến 99.";status.classList.add("form-error");return;}
 const ref="AG-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
 const body=new URLSearchParams();
-const fields={ "form-name":"agatea-orders","order_id":ref, "variant":String(theme), "product_id":p.id, "product_name":shortLabel(p), "unit_price":String(p.price), "quantity":String(q), "subtotal":String(p.price*q), "customer_name":String(data.get("customer_name")||"").trim(), "phone":String(data.get("phone")||"").trim(),"address":String(data.get("address")||"").trim(),"message":String(data.get("message")||"").trim(),"consent":"yes","bot-field":""};
+const fields={ "form-name":"agatea-orders","order_id":ref, "variant":String(theme), "source_page":document.body.dataset.page||"home", "product_id":p.id, "product_name":shortLabel(p), "unit_price":String(p.price), "quantity":String(q), "subtotal":String(p.price*q), "customer_name":String(data.get("customer_name")||"").trim(), "phone":String(data.get("phone")||"").trim(),"address":String(data.get("address")||"").trim(),"message":String(data.get("message")||"").trim(),"consent":"yes","bot-field":""};
 Object.entries(fields).forEach(([k,v])=>body.append(k,v));
 btn.disabled=true;btn.textContent="Đang gửi yêu cầu…";
 const netlifyHost=location.hostname.endsWith(".netlify.app");
