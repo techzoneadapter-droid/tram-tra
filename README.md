@@ -49,3 +49,13 @@ Nguồn Excel có **ảnh bao bì gốc tông nâu trầm, vàng kim**. Sáu ả
 - `mau-1.html` ... `mau-5.html` — SEO riêng từng mẫu.
 - `cam-on.html` — lời cảm ơn và mã yêu cầu.
 - `forms.html` — Netlify Forms skeleton (không xóa).
+
+## Xem ngay qua link review tạm (không cần bật GitHub Pages)
+
+Dịch vụ bên thứ ba raw.githack.com phục vụ bản HTML trực tiếp từ nhánh main. Khi mở có thể hiện màn hình xác nhận an toàn lần đầu; chỉ dùng để xem demo, không dùng làm website bán hàng thật hoặc nhập dữ liệu cá nhân thật.
+
+- [Mẫu 1 — Di sản](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-1.html)
+- [Mẫu 2 — Tĩnh tại](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-2.html)
+- [Mẫu 3 — Quà tặng](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-3.html)
+- [Mẫu 4 — Mua hàng](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-4.html)
+- [Mẫu 5 — Câu chuyện](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-5.html)
