@@ -57,3 +57,12 @@ Người quản trị repo cần vào **Settings → Pages → Build and deploym
 Mỗi HTML có title/description riêng, H1 duy nhất, nội dung đọc trực tiếp, internal link 5 trang và mobile breakpoints trong `atelier.css`. Chưa có xác minh Lighthouse, ảnh chụp thực tế trên nhiều trình duyệt hoặc thử nghiệm nhận đơn trực tiếp tại Netlify. Trước khi index chính thức, chỉ cho Google index một bộ website đã chọn; noindex các concept review còn lại để tránh nội dung cạnh tranh cùng chủ đề.
 
 Các file sửa chính: `atelier.css`, `atelier.js`, `mau-1.html`…`mau-5.html`, `mau-N/*.html`, `config.js`, `forms.html`.
+
+## Nội dung hương trầm & đổi phong cách (31/10/2026)
+
+- Viết lại 25 trang: nếp thư phòng chiều cuối năm; trà ngày mưa; món biếu dành cho thầy cũ; thông tin mua hàng minh bạch; bài bút ký về mùi hương và ký ức.
+- Bỏ câu “Bạn thân mến...” lặp nhiều lần; cập nhật metadata, trang chủ, truyện, quà tặng, catalog, FAQ, form và công cụ gợi ý quà.
+- Mẫu số 3 chuyển sang **xanh rêu / vàng đồng / giấy ngà**, không còn hồng hoặc đỏ mận.
+- Có chuyên mục riêng về **hương trầm trong văn hóa thưởng hương** ở cả 25 trang, được phân biệt với Trầm trà đang niêm yết. Không thêm SKU nhang trầm vì nguồn COST A chỉ xác nhận sáu sản phẩm trà.
+- Nội dung biên tập lưu tại `content/editorial.json`; CSS mới cho chương truyện, lư trầm, ghi chú biếu tặng ở `atelier.css`.
+- Trước khi chạy Ads: thay vector minh họa bằng ảnh bao bì được duyệt, xác minh thành phần và xuất xứ, hoàn thiện thông tin doanh nghiệp/chính sách.
