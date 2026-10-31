@@ -68,6 +68,11 @@ const el=document.createElement("img");
 el.src=url(key,priority?1800:1400);
 el.alt=alt;el.width=priority?1800:1400;el.height=priority?1100:950;
 el.decoding="async";el.loading=priority?"eager":"lazy";
+el.addEventListener("error",function fallback(){
+ el.removeEventListener("error",fallback);
+ el.src=(document.body.dataset.root||"./")+"assets/tram-100.svg";
+ el.style.objectFit="contain";el.style.padding="22px";el.style.filter="none";
+});
 if(priority)el.setAttribute("fetchpriority","high");
 return el;
 }
