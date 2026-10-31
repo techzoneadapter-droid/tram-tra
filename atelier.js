@@ -57,7 +57,7 @@ const page=document.body.dataset.page||"home";
 const media={
 1:{hero:"photo-1724436494066-d481e94a9754",scene:"photo-1771520331563-bfe4db7a088c",story:"photo-1699273848585-f96162525a99",incense:"photo-1777361988778-6e918aaa2e26",name:"Thư phòng với bàn trà gỗ và không gian truyền thống"},
 2:{hero:"photo-1735964519674-440909118206",scene:"photo-1674255506074-3bb77cc925e5",story:"photo-1773394472792-a3a2f9a85d2e",incense:"photo-1777361988778-6e918aaa2e26",name:"Góc trà tĩnh tại với ánh sáng tự nhiên"},
-3:{hero:"photo-1699273848585-f96162525a99",scene:"photo-1724436494066-d481e94a9754",story:"photo-1674255506074-3bb77cc925e5",incense:"photo-1777361988778-6e918aaa2e26",name:"Bàn trà và khung cảnh gặp gỡ thân tình"},
+3:{hero:"photo-1674255506074-3bb77cc925e5",scene:"photo-1724436494066-d481e94a9754",story:"photo-1674255506074-3bb77cc925e5",incense:"photo-1777361988778-6e918aaa2e26",name:"Bàn trà và khung cảnh gặp gỡ thân tình"},
 4:{hero:"photo-1777387921168-c4d9349dabd0",scene:"photo-1674255506074-3bb77cc925e5",story:"photo-1773394472792-a3a2f9a85d2e",incense:"photo-1777361988778-6e918aaa2e26",name:"Bộ ấm chén và bàn trà trong không gian thưởng trà"},
 5:{hero:"photo-1699273848585-f96162525a99",scene:"photo-1735964519674-440909118206",story:"photo-1724436494066-d481e94a9754",incense:"photo-1777361988778-6e918aaa2e26",name:"Chén trà, trang sách và ký ức về một cuộc gặp"}
 };
