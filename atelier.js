@@ -49,65 +49,50 @@ const next=new URL((document.body.dataset.root||"./")+"cam-on.html",location.hre
 });
 })();
 
-/* Visual storytelling edition: different scenes for every AGATEA concept. */
+/* AGATEA local visual edition: five original image sets; no stock-image CDN. */
 (()=>{
 "use strict";
-const t=Number(document.body.dataset.theme||1);
-const page=document.body.dataset.page||"home";
-const media={
-1:{hero:"photo-1724436494066-d481e94a9754",scene:"photo-1771520331563-bfe4db7a088c",story:"photo-1699273848585-f96162525a99",incense:"photo-1771030667074-285cf47a59c0",name:"Thư phòng với bàn trà gỗ và không gian truyền thống"},
-2:{hero:"photo-1735964519674-440909118206",scene:"photo-1674255506074-3bb77cc925e5",story:"photo-1773394472792-a3a2f9a85d2e",incense:"photo-1777361988778-6e918aaa2e26",name:"Góc trà tĩnh tại với ánh sáng tự nhiên"},
-3:{hero:"photo-1674255506074-3bb77cc925e5",scene:"photo-1724436494066-d481e94a9754",story:"photo-1674255506074-3bb77cc925e5",incense:"photo-1753016942254-2d60a6b9571f",name:"Bàn trà và khung cảnh gặp gỡ thân tình"},
-4:{hero:"photo-1777387921168-c4d9349dabd0",scene:"photo-1674255506074-3bb77cc925e5",story:"photo-1773394472792-a3a2f9a85d2e",incense:"photo-1777361988778-6e918aaa2e26",name:"Bộ ấm chén và bàn trà trong không gian thưởng trà"},
-5:{hero:"photo-1699273848585-f96162525a99",scene:"photo-1735964519674-440909118206",story:"photo-1724436494066-d481e94a9754",incense:"photo-1753016941673-b90b7d5937c7",name:"Chén trà, trang sách và ký ức về một cuộc gặp"}
-};
-const v=media[t];if(!v)return;
-const url=(key,w)=>"https://images.unsplash.com/"+key+"?auto=format&fit=crop&w="+w+"&q=78";
-function img(key,alt,priority=false){
-const el=document.createElement("img");
-el.src=url(key,priority?1800:1400);
-el.alt=alt;el.width=priority?1800:1400;el.height=priority?1100:950;
-el.decoding="async";el.loading=priority?"eager":"lazy";
-el.addEventListener("error",function fallback(){
- el.removeEventListener("error",fallback);
- el.src=(document.body.dataset.root||"./")+"assets/tram-100.svg";
- el.style.objectFit="contain";el.style.padding="22px";el.style.filter="none";
-});
-if(priority)el.setAttribute("fetchpriority","high");
-return el;
+const t=Number(document.body.dataset.theme||1),page=document.body.dataset.page||"home";
+if(!(t>=1&&t<=5))return;
+const root=document.body.dataset.root||"./";
+const path=(kind)=>root+"assets/lifestyle/agatea-"+t+"-"+kind+".webp";
+const descriptions=[
+"Thư phòng, ấm trà và cuộc trò chuyện trong nắng chiều",
+"Góc phòng trà ngày mưa, một buổi thưởng trà tĩnh tại",
+"Cuộc gặp thăm hỏi và trao hộp quà AGATEA",
+"Bộ trà và hộp quà AGATEA trưng bày trên bàn trà",
+"Chuyện của chén trà, hương trầm và ký ức"
+];
+const caption=["THƯ PHÒNG / AGATEA","THIỀN TRÀ / AGATEA","NẾP QUÀ / AGATEA","BỘ SƯU TẬP / AGATEA","AGATEA JOURNAL / SỐ 01"];
+function img(kind,priority=false){
+ const el=document.createElement("img");
+ el.src=path(kind);el.alt="Hình dựng minh họa AGATEA: "+descriptions[t-1];
+ el.width=kind==="hero"?1672:kind==="story"?1400:1300;
+ el.height=kind==="hero"?941:kind==="story"?788:732;
+ el.loading=priority?"eager":"lazy";el.decoding="async";
+ if(priority)el.setAttribute("fetchpriority","high");
+ return el;
 }
-function figure(className,key,alt,caption){
-const f=document.createElement("figure");f.className=className;
-f.append(img(key,alt));
-if(caption){const c=document.createElement("figcaption");c.textContent=caption;f.append(c)}
-return f;
+function figure(className,kind,text,priority=false){
+ const f=document.createElement("figure");f.className=className;
+ const photo=img(kind,priority);if(priority)photo.className="lifestyle-room";
+ f.append(photo);
+ if(text){const c=document.createElement("figcaption");c.textContent=text;f.append(c)}
+ return f;
 }
 if(page==="home"){
-const old=document.querySelector(".hero .art-block");
-if(old){
-const f=document.createElement("figure");f.className="lifestyle-hero";
-const room=img(v.hero,v.name,true);room.className="lifestyle-room";f.append(room);
-const shade=document.createElement("span");shade.className="lifestyle-shade";shade.setAttribute("aria-hidden","true");f.append(shade);
-const pack=old.querySelector("img");
-if(pack){const copy=pack.cloneNode(true);copy.className="lifestyle-pack";copy.loading="eager";copy.alt="Bao bì minh họa sản phẩm Trà Trầm Hương AGATEA";f.append(copy)}
-const text=document.createElement("figcaption");text.textContent=["THƯ PHÒNG / AGATEA","THIỀN TRÀ / AGATEA","NẾP QUÀ / AGATEA","BỘ SƯU TẬP / AGATEA","AGATEA JOURNAL / SỐ 01"][t-1];f.append(text);
-old.replaceWith(f);
-}
-const quote=document.querySelector(".home-scene .scene-quote");
-if(quote){
-const photo=figure("scene-photo",v.scene,"Không gian trà: "+v.name,quote.textContent.trim());
-quote.replaceWith(photo);
-}
+ const old=document.querySelector(".hero .art-block");
+ if(old)old.replaceWith(figure("lifestyle-hero","hero",caption[t-1],true));
+ const quote=document.querySelector(".home-scene .scene-quote");
+ if(quote)quote.replaceWith(figure("scene-photo","story",quote.textContent.trim()));
 }else{
-const title=document.querySelector("main .page-title");
-if(title){
-const key=page==="story"?v.story:page==="gift"?v.hero:page==="collection"?v.scene:v.story;
-const label={story:"CÂU CHUYỆN / KHÔNG GIAN TRÀ",collection:"GÓC TRÀ / CHỌN SẢN PHẨM",gift:"MỘT MÓN QUÀ / MỘT CUỘC GẶP",faq:"GIẢI ĐÁP / THƯỞNG TRÀ"}[page]||"AGATEA / THƯỞNG TRÀ";
-title.after(figure("chapter-banner "+page+"-banner",key,"Không gian minh họa: "+v.name,label));
+ const title=document.querySelector("main .page-title");
+ const which=page==="gift"?"hero":page==="faq"?"incense":"story";
+ const label={story:"CÂU CHUYỆN / KHÔNG GIAN TRÀ",collection:"GÓC TRÀ / CHỌN SẢN PHẨM",gift:"MỘT MÓN QUÀ / MỘT CUỘC GẶP",faq:"GIẢI ĐÁP / THƯỞNG TRÀ"}[page];
+ if(title)title.after(figure("chapter-banner "+page+"-banner",which,(label||"AGATEA")+" · ẢNH DỰNG MINH HỌA"));
 }
-}
-const chapter=document.querySelector(".chapter-side .incense-art");
-if(chapter)chapter.replaceWith(figure("story-side-photo",v.scene,"Nếp thưởng trà, khung cảnh trang trí","MỘT GÓC PHÒNG TRÀ"));
-const incense=document.querySelector(".incense-section .incense-art");
-if(incense)incense.replaceWith(figure("incense-lifestyle",v.incense,"Làn hương trong không gian thưởng hương; không phải sản phẩm đang bán","HƯƠNG TRẦM / NÉT VĂN HÓA THƯỞNG HƯƠNG"));
+const side=document.querySelector(".chapter-side .incense-art");
+if(side)side.replaceWith(figure("story-side-photo","story","CHUYỆN BÊN BÀN TRÀ"));
+const scent=document.querySelector(".incense-section .incense-art");
+if(scent)scent.replaceWith(figure("incense-lifestyle","incense","HƯƠNG TRẦM / NẾP THƯỞNG HƯƠNG · ẢNH MINH HỌA"));
 })();

@@ -125,3 +125,18 @@
 body .hero .hero-copy{position:relative;z-index:3}
 @media(max-width:820px){.lifestyle-hero{min-height:380px;height:clamp(350px,58vw,510px)}.chapter-banner{width:calc(100% - 55px)}}
 @media(max-width:580px){.lifestyle-hero{min-height:310px;height:310px}.lifestyle-hero .lifestyle-pack{width:130px;max-height:140px;right:8px;bottom:18px}.lifestyle-hero figcaption{font-size:.52rem;bottom:13px;left:14px}.scene-photo{height:280px}.scene-photo figcaption{padding:17px;font-size:1.13rem}.chapter-banner{width:calc(100% - 38px);height:220px;margin-bottom:18px}.chapter-banner figcaption{font-size:.52rem;bottom:10px;left:10px}.incense-lifestyle{height:270px}.story-side-photo{height:250px}}
+
+/* AGATEA locally hosted WebP imagery – corrected responsive crop and color */
+.lifestyle-hero{position:relative;margin:0;min-height:620px;height:100%;overflow:hidden;background:var(--panel)}
+.lifestyle-hero .lifestyle-room{width:100%;height:100%;object-fit:cover;object-position:60% center;display:block;filter:none!important}
+.t2 .lifestyle-room{object-position:44% center}.t3 .lifestyle-room{object-position:57% center}
+.t4 .lifestyle-room{object-position:63% center}.t5 .lifestyle-room{object-position:65% center}
+.lifestyle-hero figcaption{position:absolute;bottom:20px;left:21px;padding:8px 12px;color:#fdf7e9;background:#192b20c7;font-size:.59rem;letter-spacing:.13em}
+.scene-photo,.chapter-banner,.incense-lifestyle,.story-side-photo{position:relative;overflow:hidden;margin:0;background:var(--panel)}
+.scene-photo img,.chapter-banner img,.incense-lifestyle img,.story-side-photo img{width:100%;height:100%;display:block;object-fit:cover;filter:none!important}
+.scene-photo{height:450px;min-height:0}.scene-photo figcaption{background:linear-gradient(0deg,#17241cdd,transparent);color:white}
+.chapter-banner{width:min(1360px,calc(100% - 70px));margin:0 auto 40px;height:clamp(240px,30vw,440px)}
+.t4 .chapter-banner{height:clamp(205px,23vw,330px)}
+.incense-lifestyle{height:clamp(285px,31vw,405px)}.story-side-photo{height:330px}
+@media(max-width:820px){.lifestyle-hero{height:420px;min-height:420px}.scene-photo{height:340px}.chapter-banner{width:calc(100% - 45px)}}
+@media(max-width:580px){.lifestyle-hero{height:300px;min-height:300px}.lifestyle-room{object-position:60% center!important}.t2 .lifestyle-room{object-position:32% center!important}.t3 .lifestyle-room{object-position:68% center!important}.scene-photo{height:270px}.chapter-banner{width:calc(100% - 30px);height:215px}.incense-lifestyle{height:260px}.story-side-photo{height:250px}}
