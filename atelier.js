@@ -21,10 +21,10 @@ function pickProduct(id){if(!form||!P.some(p=>p.id===id))return;select.value=id;
 document.addEventListener("click",e=>{const b=e.target.closest("[data-buy]");if(b){e.preventDefault();pickProduct(b.dataset.buy)}});
 $$("[data-filter]").forEach(button=>button.addEventListener("click",()=>{const value=button.dataset.filter;$$("[data-filter]").forEach(c=>c.setAttribute("aria-pressed",String(c===button)));$$("[data-category]").forEach(card=>{card.hidden=value!=="all"&&card.dataset.category!==value})}));
 const messages={
-parent:{title:"Một món quà dành cho cha mẹ",text:"Mong những ngày sau này, mỗi lần pha trà đều có một phút thảnh thơi. Gợi ý: Hương Sen 120g – hộp quà tặng.",product:"sen120"},
-partner:{title:"Một lời cảm ơn đối tác",text:"Cảm ơn những lần đồng hành và những cuộc trao đổi chân thành. Gợi ý: Trầm trà 120g – hộp quà tặng.",product:"tram120"},
-friend:{title:"Một lời hẹn cùng bạn cũ",text:"Lúc nào rảnh, ngồi xuống uống một chén trà nhé. Gợi ý: Hương Sen 100g – hộp hít nam châm.",product:"sen100"},
-self:{title:"Dành một chén cho chính mình",text:"Bắt đầu từ hộp giấy nhỏ để khám phá hương trà, không cần vội. Gợi ý: Trầm trà 10g – hộp giấy.",product:"tram10"}
+parent:{title:"Mang trà về nhà cuối tuần",text:"Con ghé qua ăn cơm nhé. Con mang chút trà, nhà mình ngồi nói chuyện sau bữa cơm. Gợi ý: Hương Sen 120g.",product:"sen120"},
+partner:{title:"Lời cảm ơn người đã đồng hành",text:"Cảm ơn những lần trao đổi thẳng thắn và sự tin tưởng trong công việc. Gợi ý: Trầm trà 120g.",product:"tram120"},
+friend:{title:"Hẹn người bạn đã lâu chưa gặp",text:"Lâu rồi không ngồi cùng nhau. Chọn một buổi chiều ít việc, mình pha trà và kể tiếp chuyện cũ. Gợi ý: Hương Sen 100g.",product:"sen100"},
+self:{title:"Thử một hộp nhỏ cho mình",text:"Trước khi chọn hộp lớn, thử quy cách 10g xem có hợp khẩu vị. Gợi ý mang tính tham khảo, không phải đánh giá hương vị sản phẩm.",product:"tram10"}
 };
 $$("[data-recipient]").forEach(b=>b.addEventListener("click",()=>{const key=b.dataset.recipient,m=messages[key],target=$("#gift-match");if(!m||!target)return;$$("[data-recipient]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));target.innerHTML="";const title=document.createElement("strong");title.textContent=m.title;const text=document.createElement("p");text.textContent=m.text;const pick=document.createElement("button");pick.type="button";pick.className="purchase-btn";pick.dataset.buy=m.product;pick.textContent="Chọn sản phẩm gợi ý ↗";target.append(title,text,pick)}));
 form?.addEventListener("submit",async e=>{
