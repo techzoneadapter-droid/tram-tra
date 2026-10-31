@@ -24,9 +24,11 @@ const messages={
 parent:{title:"Mang trà về nhà cuối tuần",text:"Con ghé qua ăn cơm nhé. Con mang chút trà, nhà mình ngồi nói chuyện sau bữa cơm. Gợi ý: Hương Sen 120g.",product:"sen120"},
 partner:{title:"Lời cảm ơn người đã đồng hành",text:"Cảm ơn những lần trao đổi thẳng thắn và sự tin tưởng trong công việc. Gợi ý: Trầm trà 120g.",product:"tram120"},
 friend:{title:"Hẹn người bạn đã lâu chưa gặp",text:"Lâu rồi không ngồi cùng nhau. Chọn một buổi chiều ít việc, mình pha trà và kể tiếp chuyện cũ. Gợi ý: Hương Sen 100g.",product:"sen100"},
-self:{title:"Thử một hộp nhỏ cho mình",text:"Trước khi chọn hộp lớn, thử quy cách 10g xem có hợp khẩu vị. Gợi ý mang tính tham khảo, không phải đánh giá hương vị sản phẩm.",product:"tram10"}
+self:{title:"Thử một hộp nhỏ cho mình",text:"Trước khi chọn hộp lớn, thử quy cách 10g xem có hợp khẩu vị. Bạn có thể bắt đầu từ hộp nhỏ rồi chọn thêm nếu thấy hợp vị.",product:"tram10"}
 };
 $$("[data-recipient]").forEach(b=>b.addEventListener("click",()=>{const key=b.dataset.recipient,m=messages[key],target=$("#gift-match");if(!m||!target)return;$$("[data-recipient]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));target.innerHTML="";const title=document.createElement("strong");title.textContent=m.title;const text=document.createElement("p");text.textContent=m.text;const pick=document.createElement("button");pick.type="button";pick.className="purchase-btn";pick.dataset.buy=m.product;pick.textContent="Chọn sản phẩm gợi ý ↗";target.append(title,text,pick)}));
+const canAcceptOrders=location.hostname.endsWith(".netlify.app")||window.AGATEA_CONFIG?.formsEnabled===true;
+if(!canAcceptOrders&&$("#order-submit"))$("#order-submit").textContent="Xem trước yêu cầu ↗";
 form?.addEventListener("submit",async e=>{
 e.preventDefault();
 const status=$("#order-status"),submit=$("#order-submit");status.textContent="";status.classList.remove("error");
@@ -36,7 +38,7 @@ const p=P.find(x=>x.id===d.get("product_id"));const q=Number(d.get("quantity"));
 if(!p||!Number.isInteger(q)||q<1||q>99){status.textContent="Vui lòng chọn sản phẩm và số lượng từ 1 đến 99.";status.classList.add("error");return;}
 const phone=String(d.get("phone")||"").trim().replace(/[\s.\-]/g,"");if(!/^(?:\+84|0)[0-9]{9,10}$/.test(phone)){status.textContent="Vui lòng kiểm tra số điện thoại liên hệ.";status.classList.add("error");return;}
 if(!d.get("consent")){status.textContent="Vui lòng đồng ý chính sách xử lý thông tin để gửi yêu cầu.";status.classList.add("error");return;}
-const isLive=location.hostname.endsWith(".netlify.app")||window.AGATEA_CONFIG?.formsEnabled===true;
+const isLive=canAcceptOrders;
 const ref="AG-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
 const body=new URLSearchParams();
 const entry={ "form-name":"agatea-orders","order_id":ref,"variant":String(document.body.dataset.theme||1),"source_page":String(document.body.dataset.page||"home"),"product_id":p.id,"product_name":option(p),"unit_price":String(p.price),"quantity":String(q),"subtotal":String(p.price*q),"customer_name":String(d.get("customer_name")||"").trim(),"phone":phone,"address":String(d.get("address")||"").trim(),"message":String(d.get("message")||"").trim(),"consent":"yes","bot-field":""};
@@ -45,11 +47,11 @@ try{
 if(isLive){const prefix=document.body.dataset.root||"./";const result=await fetch(prefix+"forms.html",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},body:body.toString()});if(!result.ok)throw Error("Order HTTP "+result.status)}
 sessionStorage.setItem("agatea-last-order",JSON.stringify({orderId:ref,product:option(p),quantity:q,subtotal:p.price*q,mode:isLive?"live":"demo"}));
 const next=new URL((document.body.dataset.root||"./")+"cam-on.html",location.href);if(!isLive)next.searchParams.set("demo","1");location.assign(next.href)
-}catch(err){status.textContent="Hệ thống chưa tiếp nhận được yêu cầu. Không có đơn nào được xác nhận. Bạn vui lòng thử lại sau.";status.classList.add("error");submit.disabled=false;submit.textContent="Gửi yêu cầu đặt hàng ↗"}
+}catch(err){status.textContent="Hệ thống chưa tiếp nhận được yêu cầu. Không có đơn nào được xác nhận. Bạn vui lòng thử lại sau.";status.classList.add("error");submit.disabled=false;submit.textContent=isLive?"Gửi yêu cầu đặt hàng ↗":"Xem trước yêu cầu ↗"}
 });
 })();
 
-/* AGATEA local visual edition: five original image sets; no stock-image CDN. */
+/* AGATEA lifestyle assets */
 (()=>{
 "use strict";
 const t=Number(document.body.dataset.theme||1),page=document.body.dataset.page||"home";
@@ -66,7 +68,7 @@ const descriptions=[
 const caption=["THƯ PHÒNG / AGATEA","THIỀN TRÀ / AGATEA","NẾP QUÀ / AGATEA","BỘ SƯU TẬP / AGATEA","AGATEA JOURNAL / SỐ 01"];
 function img(kind,priority=false){
  const el=document.createElement("img");
- el.src=path(kind);el.alt="Hình dựng minh họa AGATEA: "+descriptions[t-1];
+ el.src=path(kind);el.alt=""+descriptions[t-1];
  el.width=kind==="hero"?1672:kind==="story"?1400:1300;
  el.height=kind==="hero"?941:kind==="story"?788:732;
  el.loading=priority?"eager":"lazy";el.decoding="async";
@@ -89,10 +91,10 @@ if(page==="home"){
  const title=document.querySelector("main .page-title");
  const which=page==="gift"?"hero":page==="faq"?"incense":"story";
  const label={story:"CÂU CHUYỆN / KHÔNG GIAN TRÀ",collection:"GÓC TRÀ / CHỌN SẢN PHẨM",gift:"MỘT MÓN QUÀ / MỘT CUỘC GẶP",faq:"GIẢI ĐÁP / THƯỞNG TRÀ"}[page];
- if(title)title.after(figure("chapter-banner "+page+"-banner",which,(label||"AGATEA")+" · ẢNH DỰNG MINH HỌA"));
+ if(title)title.after(figure("chapter-banner "+page+"-banner",which,(label||"AGATEA")+""));
 }
 const side=document.querySelector(".chapter-side .incense-art");
 if(side)side.replaceWith(figure("story-side-photo","story","CHUYỆN BÊN BÀN TRÀ"));
 const scent=document.querySelector(".incense-section .incense-art");
-if(scent)scent.replaceWith(figure("incense-lifestyle","incense","HƯƠNG TRẦM / NẾP THƯỞNG HƯƠNG · ẢNH MINH HỌA"));
+if(scent)scent.replaceWith(figure("incense-lifestyle","incense","HƯƠNG TRẦM / NẾP THƯỞNG HƯƠNG"));
 })();
