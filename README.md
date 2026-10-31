@@ -1,75 +1,59 @@
-# AGATEA — 5 landing page bán Trà Trầm Hương
+# AGATEA — 5 website riêng biệt × 5 trang = 25 trang HTML
 
-Bộ 5 concept website responsive, có chọn 6 sản phẩm, lọc quy cách, giá chính xác theo file COST A, điền biểu mẫu và trang cảm ơn.
+Bản thiết kế mới nhất thay thế cách làm 5 mẫu chỉ đổi màu. Mỗi phong cách có typography, bảng màu, bố cục sản phẩm, cách kể chuyện và luồng dẫn tới form khác nhau. Nội dung được sinh sẵn trong 25 file HTML để trình duyệt và công cụ tìm kiếm đọc trực tiếp mà không cần JavaScript dựng nội dung.
 
-## Link xem thử (sau khi bật GitHub Pages)
+## 5 bộ thiết kế và link trong repo
 
-- https://techzoneadapter-droid.github.io/tram-tra/mau-1.html — Di sản
-- https://techzoneadapter-droid.github.io/tram-tra/mau-2.html — Tĩnh tại
-- https://techzoneadapter-droid.github.io/tram-tra/mau-3.html — Quà tặng
-- https://techzoneadapter-droid.github.io/tram-tra/mau-4.html — Mua hàng
-- https://techzoneadapter-droid.github.io/tram-tra/mau-5.html — Câu chuyện
+| Concept | Trang chủ | Các trang chuyên biệt |
+|---|---|---|
+| 01 Thư phòng di sản | `mau-1.html` | `mau-1/*.html` |
+| 02 Thiền trà tĩnh tại | `mau-2.html` | `mau-2/*.html` |
+| 03 Quà tặng cảm xúc | `mau-3.html` | `mau-3/*.html` |
+| 04 Smart Shop | `mau-4.html` | `mau-4/*.html` |
+| 05 AGATEA Journal | `mau-5.html` | `mau-5/*.html` |
 
-Trang tổng hợp: https://techzoneadapter-droid.github.io/tram-tra/
+Mỗi thư mục `mau-N/` có đúng 4 trang: `cau-chuyen.html`, `bo-suu-tap.html`, `qua-tang.html`, `giai-dap.html`. Kết hợp với trang chủ `mau-N.html` thành 5 trang/bộ. Các URL cũ `cau-chuyen.html?mau=N`... chuyển hướng đến trang tương ứng trong thư mục mới.
 
-**Đường dẫn chưa chắc đã hoạt động ngay.** Để bật GitHub Pages: vào repo → Settings → Pages → Build and deployment → Source → GitHub Actions. Repo đã có workflow deploy sẵn. Kiểm tra Actions chạy thành công mới chia sẻ link.
+### Điểm khác nhau thực chất
 
-## Đặt hàng THẬT — cần kích hoạt Netlify Forms
+- **Di sản:** thư phòng nâu trầm, chữ Noto Serif, danh mục hàng ngang có số thứ tự, nội dung câu chuyện theo phong thư.
+- **Tĩnh tại:** bố cục tối giản không viền, nhiều khoảng trắng, kiểu chữ nhẹ, câu chuyện ba khoảng thở.
+- **Quà tặng:** phong cách hồng đất và đỏ mận, catalog thẻ bo mềm, công cụ chọn người nhận bằng nút tương tác trên trang Quà tặng.
+- **Smart Shop:** thiết kế module, giá hàng đầu, bảng so sánh quy cách, bộ lọc và nút chọn mua nhanh.
+- **Journal:** phong cách tạp chí, cột dọc số báo, câu chuyện nhiều chương và catalog hai cột kiểu biên tập.
 
-GitHub Pages không thể lưu biểu mẫu gửi đơn vì chỉ hosting file tĩnh. Do đó trên GitHub Pages, sau khi điền form, trang cảm ơn sẽ hiện rõ **DEMO / KHÔNG GỬI ĐƠN THẬT**; không hề giả lập gửi đơn thành công.
+## Sản phẩm và nội dung
 
-Để có form lưu đơn thật:
+Giữ đúng 6 sản phẩm & giá niêm yết theo COST A:
 
-1. Đăng nhập Netlify, chọn Add new project → Import an existing project → GitHub → repo `techzoneadapter-droid/tram-tra`.
-2. Build command để trống, publish directory `.`.
-3. Vào Netlify → Forms → **Enable form detection**, rồi redeploy. Form `agatea-orders` nằm trong `forms.html`.
-4. Truy cập site qua domain `*.netlify.app`: form được gửi bằng POST và chỉ chuyển đến `cam-on.html` khi có HTTP 2xx.
-5. Gửi một đơn thử và kiểm tra Netlify → Forms → `agatea-orders`, cả mục Verified và Spam. Cài Form notifications để nhận email.
-6. Nếu dùng **custom domain** trên Netlify, chỉ sau khi kiểm tra Form detection hoạt động mới đổi `formsEnabled:true` trong `config.js`.
+1. Trầm trà Hương Sen 120g / Hộp quà: **1.499.000đ**
+2. Trầm trà 120g / Hộp quà: **1.199.000đ**
+3. Trầm trà Hương Sen 100g / Hộp hít nam châm: **650.000đ**
+4. Trầm trà 100g / Hộp hít nam châm: **500.000đ**
+5. Trầm trà Hương Sen 10g / Hộp giấy: **80.000đ**
+6. Trầm trà 10g / Hộp giấy: **60.000đ**
 
-Đây là **form yêu cầu đặt hàng**, chưa có thanh toán online, tồn kho, email trả lời tự động hay vận đơn. Trước khi kinh doanh, điền thông tin pháp nhân/hotline/địa chỉ liên hệ thực, chính sách vận chuyển và thanh toán, hoàn thiện chính sách bảo mật.
+Ảnh `assets/*.svg` **chỉ là minh họa**, không phải ảnh bao bì thực tế được duyệt. Cần thay trước khi chạy Google Ads/Facebook Ads. Không dùng nội dung y tế, đánh giá khách hàng hoặc khuyến mại chưa chứng thực.
 
-## Thiết kế và hình sản phẩm
+## Form đặt hàng
 
-Nguồn Excel có **ảnh bao bì gốc tông nâu trầm, vàng kim**. Sáu ảnh `assets/*.svg` trong repo là **minh họa vector** bám tinh thần màu và bố cục sản phẩm, không phải ảnh chụp sản phẩm thật hoặc bản sao chính xác. Trước khi chạy Ads thay bằng ảnh đã được thương hiệu phê duyệt. Không dùng mockup xanh lá trước đây làm hình sản phẩm.
+25 trang cùng dùng `atelier.js` và form có sẵn trong HTML, cho phép chọn sản phẩm, số lượng, điền người nhận, điện thoại, địa chỉ, lời nhắn. Có kiểm tra trường bắt buộc, tính tạm tính, trạng thái gửi và trang cảm ơn `cam-on.html`.
 
-## SEO, Ads & Analytics
+**GitHub Pages là website tĩnh: form hiển thị đơn DEMO, không gửi thông tin khách.** Để nhận đơn thật, triển khai repo vào Netlify, bật **Forms detection**, deploy lại rồi **kiểm chứng đơn thử xuất hiện trong Netlify → Forms → agatea-orders** trước khi dùng quảng cáo. Form `forms.html` là mẫu nhận trường dữ liệu. Tại tên miền Netlify mặc định, form sử dụng POST và chỉ chuyển trang cảm ơn sau khi HTTP response thành công. Với domain riêng, chỉ đặt `formsEnabled:true` trong `config.js` sau khi hệ thống nhận đơn được xác minh.
 
-- 5 trang có title/description riêng, H1 và ItemList JSON-LD, nội dung kể chuyện độc lập.
-- Khi chọn mẫu chạy thật, chuyển mẫu thắng thành trang chính, **noindex các bản thử còn lại**, dùng domain/canonical và sitemap chính thức để tránh trùng nội dung.
-- `tracking.js` tạo sự kiện dataLayer: `agatea_select_product` và `agatea_order_submitted` (chỉ gửi đơn thành công, không tính đơn demo).
-- Có thể cài `ga4Id` trong `config.js`; hãy thiết lập consent/cookie theo yêu cầu pháp lý. Chưa gắn tài khoản Google Ads hoặc Meta Pixel cụ thể.
-- Không có review giả, khan hiếm giả hoặc tuyên bố y tế không kiểm chứng.
+## Bật link preview không cảnh báo
 
-### Chỉnh sửa nội dung
+GitHub Actions workflow đã có, nhưng lần chạy gần nhất thất bại tại bước Configure Pages do GitHub token không được phép tạo Pages site: `Resource not accessible by integration`.
 
-- `site.js` — sản phẩm, giá, câu chuyện, cấu trúc 5 mẫu.
-- `style.css` — responsive, màu, các phong cách.
-- `config.js` — trạng thái nhận form / GA4.
-- `mau-1.html` ... `mau-5.html` — SEO riêng từng mẫu.
-- `cam-on.html` — lời cảm ơn và mã yêu cầu.
-- `forms.html` — Netlify Forms skeleton (không xóa).
+Người quản trị repo cần vào **Settings → Pages → Build and deployment → Source: GitHub Actions**. Sau đó kích hoạt lại workflow **Publish AGATEA previews** từ tab **Actions**. Chỉ chia sẻ link khi workflow có kết quả thành công. Link dự kiến sau khi bật:
+- `https://techzoneadapter-droid.github.io/tram-tra/mau-1.html`
+- `https://techzoneadapter-droid.github.io/tram-tra/mau-2.html`
+- `https://techzoneadapter-droid.github.io/tram-tra/mau-3.html`
+- `https://techzoneadapter-droid.github.io/tram-tra/mau-4.html`
+- `https://techzoneadapter-droid.github.io/tram-tra/mau-5.html`
 
-## Xem ngay qua link review tạm (không cần bật GitHub Pages)
+## SEO và kiểm thử
 
-Dịch vụ bên thứ ba raw.githack.com phục vụ bản HTML trực tiếp từ nhánh main. Khi mở có thể hiện màn hình xác nhận an toàn lần đầu; chỉ dùng để xem demo, không dùng làm website bán hàng thật hoặc nhập dữ liệu cá nhân thật.
+Mỗi HTML có title/description riêng, H1 duy nhất, nội dung đọc trực tiếp, internal link 5 trang và mobile breakpoints trong `atelier.css`. Chưa có xác minh Lighthouse, ảnh chụp thực tế trên nhiều trình duyệt hoặc thử nghiệm nhận đơn trực tiếp tại Netlify. Trước khi index chính thức, chỉ cho Google index một bộ website đã chọn; noindex các concept review còn lại để tránh nội dung cạnh tranh cùng chủ đề.
 
-- [Mẫu 1 — Di sản](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-1.html)
-- [Mẫu 2 — Tĩnh tại](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-2.html)
-- [Mẫu 3 — Quà tặng](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-3.html)
-- [Mẫu 4 — Mua hàng](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-4.html)
-- [Mẫu 5 — Câu chuyện](https://raw.githack.com/techzoneadapter-droid/tram-tra/main/mau-5.html)
-
-## Cấu trúc điều hướng đa trang (cập nhật)
-
-Mỗi concept `mau-1.html` ... `mau-5.html` là **Trang chủ** đầy đủ nội dung. Thanh menu có 5 mục dẫn đến 5 trang/đường dẫn:
-
-- Trang chủ: `mau-1.html` ... `mau-5.html` tùy concept.
-- Câu chuyện: `cau-chuyen.html?mau=1` (thay 1 bằng 2–5 để giữ đúng phong cách).
-- Bộ sưu tập: `bo-suu-tap.html?mau=1`.
-- Quà tặng: `qua-tang.html?mau=1`.
-- Giải đáp: `giai-dap.html?mau=1`.
-
-Mỗi trang có nội dung chuyên sâu, H1 riêng, title/description SEO riêng, menu thống nhất, nút đặt hàng và form lựa chọn 6 sản phẩm. `source_page` trong Netlify Forms cho biết đơn đến từ trang nào. HTML/CSS dùng chung quy tắc font **Be Vietnam Pro** cho nội dung và **Playfair Display** cho tiêu đề, responsive từ desktop đến mobile. Trang chuyên biệt dùng cùng 5 bảng màu qua query `?mau=N`.
-
-**Lưu ý:** Đây là code và các bài kiểm tra kết xuất, chưa thay thế quá trình kiểm tra hiển thị trực tiếp trên máy thật/thiết bị thật trước khi chạy Ads. 
+Các file sửa chính: `atelier.css`, `atelier.js`, `mau-1.html`…`mau-5.html`, `mau-N/*.html`, `config.js`, `forms.html`.
